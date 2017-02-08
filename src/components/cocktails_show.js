@@ -3,10 +3,21 @@ import { Provider } from 'react-redux'
 import { connect } from 'react-redux'
 
 class CocktailsShow extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      name: '',
+      description: ''
+    }
+  }
+
   render(){
+    const current = this.props.cocktails.filter(cocktail => cocktail.id == this.props.currentCocktail)[0]
+
     return(
       <div>
-      cocktail detail
+      <h2></h2>
+        { current === undefined ? "" : current.name}
       </div>
     )
   }
@@ -15,7 +26,8 @@ class CocktailsShow extends React.Component {
 
 function mapStateToProps (state){
   return {
-    cocktails: state.cocktails
+    cocktails: state.cocktails,
+    currentCocktail: state.currentCocktail
   }
 }
 export default connect (mapStateToProps)(CocktailsShow)

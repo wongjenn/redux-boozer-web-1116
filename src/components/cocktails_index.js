@@ -12,12 +12,7 @@ class CocktailsIndex extends React.Component {
   handleClick(event){
     event.preventDefault()
     var id = event.currentTarget.id
-    debugger
     this.props.changeCocktail(id)
-    debugger
-    console.log(this.props)
-    //store.dispatch set currentcocktail, payload this.id
-
   }
 
   render(){
