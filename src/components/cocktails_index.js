@@ -1,8 +1,7 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+
 import { connect } from 'react-redux'
-import { fetchCocktails } from '../actions'
-import { changeCocktail } from '../actions'
+import { fetchCocktails, changeCocktail } from '../actions'
 
 class CocktailsIndex extends React.Component {
   componentDidMount(){

@@ -12,23 +12,35 @@ class CocktailsCreate extends React.Component {
       instructions: '',
       source: '',
       proportions: [{
-
+        amount: "",
+        ingredient_name: ""
       }]
     }
+    this.baseState = this.state
   }
 
   handleInputChange(event){
     var key = event.target.name
     var value = event.target.value
-  this.setState({
-    key: value
-  })
+    this.setState({
+      [key]: value
+    })
   }
 
+  handleProportionChange(event){
+    var key = event.target.name
+    var value = event.target.value
+    this.setState({proportions: Object.assign({},
+      this.state.proportions, {[key]: value})
+    })
+  }
+
+
   handleSubmit(event){
-  event.preventDefault()
-  this.props.addCocktail( this.state.note )
-  this.setState({note: ''})
+    event.preventDefault()
+    debugger
+    this.props.addCocktail(this.state)
+    this.setState(this.baseState)
   }
 
   render(){
@@ -44,6 +56,13 @@ class CocktailsCreate extends React.Component {
         <input name ="instructions" type='text' onChange={this.handleInputChange.bind(this)} value={this.state.instructions}/>
         <label>Source</label>
         <input name ="source" type='text' onChange={this.handleInputChange.bind(this)} value={this.state.source}/>
+        <label>amount</label>
+        <input name = "amount" type='text' onChange={this.handleProportionChange.bind(this)}
+        value={this.state.amount}/>
+        <label>Ingredients:</label>
+        <input name = "ingredient_name" type='text' onChange={this.handleProportionChange.bind(this)}
+        value={this.state.ingredient_name}/>
+
         <input type='submit' />
       </form>
     </div>)
