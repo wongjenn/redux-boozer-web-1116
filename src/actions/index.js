@@ -1,9 +1,12 @@
+import axios from 'axios'
+const BASE_URL = "http://localhost:3000/api/v1"
+
 
 export function fetchCocktails(){
-  const defaultCocktails = [{id: 1, name: 'Gin and Tonic'}, {id: 2, name: 'Old Fashioned'}, {id: 3, name: 'Negroni'}, {id: 4, name: 'Roy Rogers'}];
+  const cocktails = axios.get(`${BASE_URL}/cocktails`).then(response =>  response.data)
   return {
     type: 'FETCH_COCKTAILS',
-    payload: defaultCocktails
+    payload: cocktails
   }
 }
 export function changeCocktail (id) {
