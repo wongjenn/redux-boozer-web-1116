@@ -1,33 +1,21 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import { connect } from 'react-redux'
 
-class CocktailsShow extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      name: '',
-      description: ''
-    }
-  }
-
-  render(){
-    const current = this.props.cocktails.filter(cocktail => cocktail.id == this.props.currentCocktail)[0]
-
-    return(
-      <div>
-      <h2></h2>
-        { current === undefined ? "" : current.name}
-      </div>
-    )
-  }
-
+function CocktailsShow (props){
+  return(
+    <div>
+    <h2></h2>
+      {props.cocktail.name}
+    </div>
+  )
 }
 
 function mapStateToProps (state){
+  const cocktail = state.cocktails.find( cocktail =>
+  cocktail.id === state.currentCocktail) || {}
+
   return {
-    cocktails: state.cocktails,
-    currentCocktail: state.currentCocktail
+    cocktail: cocktail
   }
 }
 export default connect (mapStateToProps)(CocktailsShow)

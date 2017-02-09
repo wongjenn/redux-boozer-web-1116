@@ -13,8 +13,12 @@ export default (props) => {
         <div className='container'>
            Hello From the App Component
         </div>
-        < CocktailsIndex />
-        < CocktailsShow />
+        <div className='col-md-4'>
+         < CocktailsIndex />
+        </div>
+        <div className='col-md-8'>
+         < CocktailsShow />
+        </div>
       </div>
     )
 };
